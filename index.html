@@ -1,264 +1,1294 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#10131a">
-<title>张宸的手机</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Anniversary</title>
 <style>
-:root{--ink:#17191f;--muted:#8c9099;--paper:#f5f5f7;--green:#9eea8c;--line:#e7e8eb}
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Microsoft YaHei",sans-serif;background:#11131a;color:#fff}
-body{display:flex;align-items:center;justify-content:center;padding:18px;min-height:100svh}
-button{font:inherit;cursor:pointer}
-.phone{position:relative;width:min(390px,100%);height:min(844px,calc(100svh - 36px));min-height:600px;border:8px solid #292b31;border-radius:48px;overflow:hidden;background:#f5f5f7;box-shadow:0 28px 90px #0009,inset 0 0 0 1px #ffffff55;color:var(--ink)}
-.screen{height:100%;position:relative;overflow:hidden;background:#f5f5f7}
-.status{height:44px;padding:13px 26px 0;display:flex;justify-content:space-between;align-items:flex-start;font-size:12px;font-weight:700;position:absolute;z-index:5;top:0;left:0;right:0;color:inherit;pointer-events:none}
-.status-icons{display:flex;gap:5px;align-items:center}
-.signal{font-size:11px;letter-spacing:-2px}.battery{width:19px;height:9px;border:1.5px solid currentColor;border-radius:3px;position:relative}.battery:before{content:"";position:absolute;inset:1px 3px 1px 1px;background:currentColor;border-radius:1px}.battery:after{content:"";position:absolute;right:-3px;top:2px;width:2px;height:4px;background:currentColor;border-radius:0 2px 2px 0}
-.page{position:absolute;inset:0;display:none;overflow:hidden}.page.active{display:block}
-.lock{background:linear-gradient(155deg,#a9c7d6 0%,#d9d8cb 38%,#a9b7a7 68%,#536d69 100%);color:white;text-align:center}
-.lock:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#1e2c3633,transparent 38%,#17262b44),radial-gradient(ellipse at 70% 70%,#e6e4c755,transparent 45%)}
-.lock-sun{position:absolute;width:230px;height:230px;border-radius:50%;background:#f5e6c7aa;filter:blur(3px);right:-55px;top:210px}
-.hill{position:absolute;bottom:0;left:-15%;width:130%;height:43%;background:#526f68;border-radius:48% 52% 0 0/20% 24% 0 0;transform:rotate(-7deg)}
-.hill.two{height:32%;bottom:-5%;background:#304c49;transform:rotate(8deg);left:-10%;opacity:.9}
-.lock .status{color:white}
-.lock-date{position:relative;margin-top:115px;font-size:15px;font-weight:500;text-shadow:0 1px 8px #243a3b66}
-.lock-time{position:relative;font-size:76px;letter-spacing:-4px;font-weight:250;line-height:1.12;text-shadow:0 2px 16px #243a3b33}
-.lock-note{position:absolute;left:20px;right:20px;bottom:150px;font-size:13px;color:#fff;opacity:.92;text-shadow:0 1px 6px #20322c}
-.unlock{position:absolute;bottom:53px;left:0;right:0;border:0;background:transparent;color:white;font-size:13px;letter-spacing:1px}
-.unlock .arrow{display:block;font-size:23px;margin-bottom:5px;animation:float 1.8s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-5px)}}
-.home{background:linear-gradient(145deg,#d7e5e7,#b7c9c8 48%,#e5ded1)}
-.home:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 25% 20%,#ffffffa6,transparent 35%),radial-gradient(ellipse at 80% 60%,#7faaa966,transparent 45%)}
-.home .status{color:#1b282b}
-.home-top{position:relative;padding:73px 24px 0}
-.widget{border-radius:23px;background:#ffffff80;backdrop-filter:blur(18px);padding:15px 17px;box-shadow:0 8px 30px #2942470c}
-.widget .small{font-size:12px;color:#52676a}.widget .greeting{font-size:23px;font-weight:650;margin-top:5px;letter-spacing:-.5px}.widget .sub{font-size:12px;color:#52676a;margin-top:8px}
-.app-grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:22px 10px;padding:28px 18px 0}
-.app{border:0;background:transparent;color:#233235;display:flex;flex-direction:column;align-items:center;gap:7px;font-size:11px;text-shadow:0 1px 4px #fff5}
-.icon{width:54px;height:54px;border-radius:15px;display:grid;place-items:center;font-size:27px;box-shadow:0 5px 12px #293c3c20;position:relative}
-.icon.wechat{background:linear-gradient(145deg,#9fe77e,#55bf55);color:white}
-.icon.photos{background:linear-gradient(145deg,#fff,#f3f3f3);font-size:29px}
-.icon.notes{background:linear-gradient(145deg,#fff7b8,#f3cf54);color:#8c6a15}
-.icon.phoneapp{background:linear-gradient(145deg,#a7efbd,#39c56e);color:white}
-.icon.settings{background:linear-gradient(145deg,#e4e6e9,#a5aab2);color:white}
-.icon.locked:after{content:"•";position:absolute;right:4px;top:1px;font-size:22px;color:#fff;text-shadow:0 1px 3px #0008}
-.dock{position:absolute;left:14px;right:14px;bottom:28px;height:83px;border-radius:26px;background:#ffffff75;backdrop-filter:blur(22px);display:flex;justify-content:space-evenly;align-items:center}
-.dock .icon{width:51px;height:51px}
-.home-indicator{position:absolute;bottom:7px;left:calc(50% - 58px);width:116px;height:4px;background:#1d2428;border-radius:9px;z-index:8}
-.app-page{background:#f5f5f7;color:#17191f}
-.app-header{height:92px;padding:53px 18px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e9e9eb;background:#f8f8fa}
-.back{border:0;background:transparent;color:#3478f6;font-size:15px;padding:4px 0}
-.app-title{font-size:17px;font-weight:650;position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap}
-.header-action{border:0;background:transparent;color:#3478f6;font-size:14px}
-.wechat-list{height:calc(100% - 92px);overflow:auto;background:#fff}
-.chat-row{display:flex;align-items:center;padding:12px 15px;gap:12px;border-bottom:1px solid #f0f0f1;min-height:76px;width:100%;text-align:left;background:#fff;border-top:0;border-left:0;border-right:0;color:inherit}
-.avatar{width:48px;height:48px;border-radius:12px;background:#e7d9c9;display:grid;place-items:center;font-size:23px;flex-shrink:0}
-.avatar.family{background:#f2d7d7}.avatar.neighbor{background:#d6e5f1}.avatar.duo{background:#e1d9f2}.avatar.mom{background:#f2e7c8}.avatar.dad{background:#d8e9d3}
-.chat-main{min-width:0;flex:1}.chat-name{font-size:15px;font-weight:550}.chat-preview{font-size:12px;color:#999;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:230px}.chat-meta{align-self:flex-start;font-size:10px;color:#a2a2a7;padding-top:2px}
-.chat-view{position:absolute;inset:0;background:#ededed;display:none;flex-direction:column}.chat-view.active{display:flex}
-.chat-top{height:91px;padding:52px 15px 10px;background:#f7f7f7;border-bottom:1px solid #ddd;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.chat-top .chat-heading{font-size:16px;font-weight:600;position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap}
-.chat-messages{flex:1;overflow-y:auto;padding:15px 12px 20px;display:flex;flex-direction:column;gap:14px;overscroll-behavior:contain}
-.time-divider{text-align:center;color:#999;font-size:10px;margin:4px 0 2px}
-.msg{display:flex;gap:8px;align-items:flex-start;max-width:88%}.msg.me{align-self:flex-end;flex-direction:row-reverse}
-.msg-avatar{width:34px;height:34px;border-radius:8px;background:#d9e3e7;display:grid;place-items:center;font-size:17px;flex-shrink:0}
-.msg-content{min-width:0}.sender{font-size:10px;color:#999;margin:0 0 5px 1px}.bubble{padding:10px 11px;background:white;border-radius:4px 12px 12px 12px;font-size:13px;line-height:1.55;overflow-wrap:anywhere;box-shadow:0 1px 1px #00005}
-.msg.me .bubble{background:#9eea8c;border-radius:12px 4px 12px 12px}
-.chat-input{height:57px;flex-shrink:0;background:#f7f7f7;border-top:1px solid #ddd;display:flex;align-items:center;padding:8px 10px;gap:8px}
-.input-fake{flex:1;background:#fff;border-radius:6px;height:34px;padding:8px 10px;color:#b1b1b1;font-size:12px}
-.send-hint{font-size:11px;color:#999}
-.photo-page{background:#fff}
-.photo-grid{padding:8px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;overflow:auto;height:calc(100% - 92px)}
-.photo{aspect-ratio:1/1;border:0;padding:0;overflow:hidden;position:relative;background:linear-gradient(135deg,#b7c7bf,#e5d7be);display:grid;place-items:center}
-.photo:nth-child(2){background:linear-gradient(145deg,#d9c2c0,#f0e4d4)}.photo:nth-child(3){background:linear-gradient(135deg,#a9c4d0,#e4e4d6)}.photo:nth-child(4){background:linear-gradient(145deg,#e7d7a7,#d7b9a4)}.photo:nth-child(5){background:linear-gradient(135deg,#c5d7cb,#7c9b8b)}.photo:nth-child(6){background:linear-gradient(145deg,#d4cbe5,#f0d6da)}
-.photo .emoji{font-size:43px;filter:drop-shadow(0 3px 4px #0002)}.photo .caption{position:absolute;bottom:5px;left:5px;right:5px;color:#fff;text-shadow:0 1px 5px #0009;font-size:10px;text-align:left}
-.photo-view{position:absolute;inset:0;background:#151515;color:white;display:none;flex-direction:column;z-index:10}.photo-view.active{display:flex}
-.photo-view .photo-back{height:75px;padding:50px 16px 0;background:#151515;color:white;border:0;text-align:left}
-.big-photo{flex:1;display:grid;place-items:center;font-size:100px;background:linear-gradient(135deg,#a8c0b5,#e4d8c7);position:relative}
-.big-photo p{position:absolute;bottom:28px;left:24px;right:24px;font-size:14px;line-height:1.7;text-align:center;color:#fff;text-shadow:0 1px 6px #0007}
-.notes-page{background:#fff}.notes-list{padding:16px;display:flex;flex-direction:column;gap:10px}.note-card{background:#fff9d7;border-radius:12px;padding:15px;font-size:13px;line-height:1.7;color:#4c4736}.note-card strong{display:block;font-size:14px;margin-bottom:5px}
-.toast{position:absolute;z-index:30;left:50%;bottom:85px;transform:translateX(-50%);background:#222d;color:#fff;padding:10px 15px;border-radius:20px;font-size:12px;white-space:nowrap;display:none}
-.toast.show{display:block}
-@media(max-height:680px){.phone{height:calc(100svh - 16px);min-height:560px}.lock-date{margin-top:90px}.lock-time{font-size:65px}.home-top{padding-top:62px}.app-grid{padding-top:20px;gap:17px 8px}}
+    :root {
+        --bg-dark: #000000;
+        --hw-green: linear-gradient(135deg, #b2dfdb 0%, #c8e6c9 100%);
+        --ap-orange: linear-gradient(135deg, #ffcc80 0%, #ffab91 100%);
+        --text-dark: #333;
+        --text-light: #fff;
+        --msg-green: #95ec69;
+        --msg-white: #fff;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
+    
+    body { background-color: var(--bg-dark); color: var(--text-light); overflow: hidden; height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center; }
+    
+    /* 全局水印 */
+    .watermark { position: fixed; top: 45%; left: 50%; transform: translate(-50%, -50%); font-size: 28px; font-weight: bold; color: rgba(255, 255, 255, 0.15); pointer-events: none; z-index: 99999; user-select: none; letter-spacing: 2px; }
+
+    /* 主屏幕容器 */
+    #app { width: 100%; height: 100%; max-width: 500px; position: relative; overflow: hidden; background: #000; }
+
+    /* ==== 选机界面 ==== */
+    #screen-select { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; position: absolute; top: 0; left: 0; z-index: 9999; background-color: #0a0a0a; }
+    .select-title { font-size: 18px; margin-bottom: 50px; color: #eee; letter-spacing: 1px; font-weight: 300; }
+    .phones-container { display: flex; gap: 30px; }
+    
+    .phone-card { width: 130px; height: 260px; border: 1.5px solid rgba(255, 182, 193, 0.4); border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 30px; cursor: pointer; transition: all 0.3s; position: relative; background: rgba(255, 182, 193, 0.03); }
+    .phone-card:hover { border-color: rgba(255, 182, 193, 0.8); background: rgba(255, 182, 193, 0.08); }
+    .phone-card.locked { border-color: #333; filter: grayscale(1); opacity: 0.4; cursor: not-allowed; background: rgba(255, 255, 255, 0.02); }
+    
+    /* 手机线框图标 */
+    .phone-icon { width: 56px; height: 100px; border: 2px solid #ffb6c1; border-radius: 8px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%); }
+    .phone-icon::before { content: ''; position: absolute; top: 5px; left: 50%; transform: translateX(-50%); width: 16px; height: 3px; background: #ffb6c1; border-radius: 3px; }
+    .phone-card.locked .phone-icon { border-color: #555; }
+    .phone-card.locked .phone-icon::before { background: #555; }
+    
+    .phone-card .name { font-size: 14px; color: #ffb6c1; margin-bottom: 5px; }
+    .phone-card.locked .name { color: #777; }
+    .phone-card .status { font-size: 11px; color: #888; }
+    
+    .btn-reset { margin-top: 60px; padding: 10px 20px; border-bottom: 1px solid #333; color: #666; font-size: 13px; cursor: pointer; transition: color 0.3s; }
+    .btn-reset:hover { color: #999; }
+
+    /* ==== 手机界面通用 ==== */
+    .phone-screen { width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: none; flex-direction: column; overflow: hidden; z-index: 1; }
+    .phone-screen.active { display: flex; }
+    
+    /* 状态栏 */
+    .status-bar { height: 44px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; font-size: 14px; font-weight: 500; z-index: 100; position: relative; }
+    .status-bar .icons { display: flex; gap: 5px; align-items: center; }
+    
+    /* 华为/苹果 灵动岛 */
+    .hw-notch { position: absolute; top: 5px; left: 50%; transform: translateX(-50%); width: 100px; height: 30px; background: #000; border-radius: 15px; display: flex; justify-content: center; align-items: center; gap: 8px; z-index: 101; }
+    .hw-notch::before { content: ''; width: 8px; height: 8px; background: #222; border-radius: 50%; }
+    .ap-notch { position: absolute; top: 5px; left: 50%; transform: translateX(-50%); width: 100px; height: 30px; background: #000; border-radius: 15px; z-index: 101; }
+
+    /* 底部横条：只在桌面显示 */
+    .home-bar { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 130px; height: 5px; background: rgba(0,0,0,0.3); border-radius: 3px; z-index: 200; cursor: pointer; }
+    
+    /* 锁屏页 */
+    .lock-screen { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 80px 20px 50px; position: absolute; top: 0; left: 0; z-index: 50; }
+    .hw-lock-bg { background: var(--hw-green); color: #222; }
+    .ap-lock-bg { background: var(--ap-orange); color: #222; }
+    
+    /* 锁屏退出按钮 */
+    .lock-back { position: absolute; top: 40px; left: 15px; font-size: 32px; color: #333; cursor: pointer; padding: 10px; z-index: 150; font-weight: 300; line-height: 1; }
+    
+    .lock-time-box { text-align: center; margin-top: 20px; }
+    .lock-time-box .time { font-size: 60px; font-weight: 200; letter-spacing: 2px; }
+    .lock-time-box .date { font-size: 16px; margin-top: 5px; }
+    
+    .password-box { width: 100%; max-width: 300px; background: rgba(255,255,255,0.7); border-radius: 15px; padding: 20px; display: flex; flex-direction: column; align-items: center; backdrop-filter: blur(10px); z-index: 60; }
+    .password-box .prompt { font-size: 12px; color: #666; margin-bottom: 15px; text-align: center; line-height: 1.4; }
+    .password-display { display: flex; gap: 15px; margin-bottom: 20px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #333; }
+    .dot.filled { background: #333; }
+    .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; width: 100%; }
+    .key { width: 60px; height: 60px; border-radius: 50%; background: rgba(255,255,255,0.5); display: flex; justify-content: center; align-items: center; font-size: 24px; color: #333; cursor: pointer; margin: 0 auto; user-select: none; transition: background 0.1s; }
+    .key:active { background: rgba(0,0,0,0.1); }
+    .key.fn { font-size: 16px; background: transparent; }
+    @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } }
+    .shake { animation: shake 0.3s ease-in-out; }
+
+    /* 桌面 */
+    .home-screen { width: 100%; height: 100%; display: flex; flex-direction: column; position: absolute; top: 0; left: 0; z-index: 10; }
+    .hw-home-bg { background: var(--hw-green); }
+    .ap-home-bg { background: var(--ap-orange); }
+    .apps-grid { flex: 1; padding: 40px 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-content: start; }
+    .app-icon { display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+    .app-icon .icon-img { width: 60px; height: 60px; border-radius: 15px; display: flex; justify-content: center; align-items: center; font-size: 30px; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 5px; }
+    .app-icon .app-name { font-size: 11px; color: #333; }
+    .app-icon.decor { cursor: default; opacity: 0.8; }
+    
+    /* 底部固定栏 */
+    .dock { margin: 0 15px 25px; background: rgba(255,255,255,0.4); border-radius: 25px; padding: 15px; display: flex; justify-content: space-around; backdrop-filter: blur(5px); }
+    
+    /* 通用内页 (带顶栏) */
+    .app-page { width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: #f5f5f5; color: #333; z-index: 100; display: none; flex-direction: column; }
+    .app-page.active { display: flex; }
+    .nav-bar { height: 50px; background: #ededed; display: flex; align-items: center; padding: 0 15px; justify-content: space-between; font-size: 16px; border-bottom: 1px solid #ddd; z-index: 110; }
+    .nav-bar.dark { background: #222; color: #fff; border-bottom: none; }
+    .nav-bar .back { cursor: pointer; padding: 10px; font-size: 20px; }
+    .nav-bar .title { font-weight: 500; flex: 1; text-align: center; }
+    .nav-bar .right { width: 30px; }
+
+    /* 微信列表 */
+    .wechat-list { flex: 1; overflow-y: auto; background: #fff; }
+    .wechat-item { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
+    .wechat-item img { width: 45px; height: 45px; border-radius: 5px; margin-right: 15px; background: #ddd; object-fit: cover; flex-shrink: 0; }
+    
+    /* 群聊头像拼图样式 */
+    .group-avatar { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 1px; background: #ccc; width: 45px; height: 45px; border-radius: 5px; overflow: hidden; margin-right: 15px; flex-shrink: 0; }
+    .group-avatar img { width: 100%; height: 100%; object-fit: cover; margin: 0; border-radius: 0; }
+    
+    .wechat-item .info { flex: 1; overflow: hidden; }
+    .wechat-item .info h4 { font-size: 16px; font-weight: normal; margin-bottom: 5px; }
+    .wechat-item .info p { font-size: 13px; color: #999; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .wechat-bottom { height: 55px; background: #f7f7f7; border-top: 1px solid #ddd; display: flex; justify-content: space-around; align-items: center; color: #666; font-size: 12px; flex-direction: column; }
+    
+    /* 聊天内页 */
+    .chat-page { flex: 1; background: #ededed; display: flex; flex-direction: column; overflow: hidden; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; }
+    .msg-time { text-align: center; font-size: 12px; color: #999; margin: 10px 0; width: 100%; }
+    
+    /* 左右对齐 */
+    .msg-row { display: flex; align-items: flex-start; margin-bottom: 15px; width: 100%; }
+    .msg-row.left { flex-direction: row; }
+    .msg-row.right { flex-direction: row-reverse; }
+    .msg-row img.avatar { width: 40px; height: 40px; border-radius: 5px; object-fit: cover; flex-shrink: 0; }
+
+    /* 气泡本体 */
+    .msg-bubble { max-width: 65%; padding: 10px 12px; border-radius: 5px; font-size: 15px; line-height: 1.4; word-break: break-all; position: relative; display: flex; flex-direction: column; }
+    .msg-row.left .msg-bubble { background: var(--msg-white); margin-left: 10px; }
+    .msg-row.left .msg-bubble::before { content: ''; position: absolute; left: -6px; top: 12px; border: 6px solid transparent; border-right-color: var(--msg-white); border-left: 0; }
+    .msg-row.right .msg-bubble { background: var(--msg-green); margin-right: 10px; }
+    .msg-row.right .msg-bubble::before { content: ''; position: absolute; right: -6px; top: 12px; border: 6px solid transparent; border-left-color: var(--msg-green); border-right: 0; }
+
+    /* 语音气泡 */
+    .voice-content { display: flex; align-items: center; gap: 8px; cursor: pointer; min-width: 60px; color: #333; }
+    .msg-row.right .voice-content { flex-direction: row-reverse; }
+    .voice-icon { font-size: 16px; }
+    .voice-trans { font-size: 13px; color: #333; border-top: 1px dashed #ccc; margin-top: 8px; padding-top: 8px; display: none; width: 100%; }
+    
+    .chat-input-area { height: 55px; background: #f7f7f7; border-top: 1px solid #ddd; display: flex; align-items: center; padding: 0 10px; gap: 10px; }
+    .chat-input { flex: 1; height: 35px; border-radius: 5px; border: none; padding: 0 10px; font-size: 14px; outline: none; }
+    .chat-send { padding: 8px 15px; background: #07c160; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+    
+    /* 相册 */
+    .album-grid { flex: 1; padding: 5px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; overflow-y: auto; background: #fff; }
+    .album-item { aspect-ratio: 1; background: #eee; overflow: hidden; display: flex; justify-content: center; align-items: center; cursor: pointer; }
+    .album-item img { width: 100%; height: 100%; object-fit: cover; }
+    .album-viewer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 150; display: none; justify-content: center; align-items: center; }
+    .album-viewer img { max-width: 100%; max-height: 100%; }
+    
+    /* 微博 */
+    .weibo-list { flex: 1; overflow-y: auto; background: #fff; }
+    .weibo-item { padding: 15px; border-bottom: 10px solid #f5f5f5; }
+    .weibo-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .weibo-header img { width: 40px; height: 40px; border-radius: 50%; }
+    .weibo-header .name { font-size: 14px; color: #333; font-weight: bold; }
+    .weibo-header .time { font-size: 12px; color: #999; margin-left: auto; }
+    .weibo-content { font-size: 15px; color: #333; margin-bottom: 10px; line-height: 1.5; }
+    .weibo-footer { display: flex; justify-content: space-between; color: #999; font-size: 12px; }
+    
+    /* 锁页通用 */
+    .lock-page { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 120; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .lock-page input { width: 200px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; text-align: center; font-size: 18px; margin-bottom: 10px; letter-spacing: 5px; }
+    .lock-page .hint { font-size: 12px; color: #999; margin-bottom: 20px; text-align: center; padding: 0 20px; }
+    .lock-page button { padding: 10px 30px; background: #ffb6c1; color: #fff; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
+
+    /* 推特 */
+    .tw-list { flex: 1; overflow-y: auto; background: #000; color: #fff; }
+    .tw-item { padding: 15px; border-bottom: 1px solid #333; }
+    .tw-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .tw-header img { width: 40px; height: 40px; border-radius: 50%; }
+    .tw-header .name { font-weight: bold; font-size: 15px; }
+    .tw-header .handle { color: #888; font-size: 14px; }
+    .tw-content { font-size: 15px; line-height: 1.4; margin-bottom: 10px; }
+
+    /* 日历 */
+    .cal-container { flex: 1; background: #fff; padding: 20px; }
+    .cal-header { text-align: center; font-size: 20px; font-weight: bold; margin-bottom: 20px; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; width: 100%; text-align: center; }
+    .cal-grid > div { height: 48px; display: flex; justify-content: center; align-items: center; font-size: 15px; color: #333; }
+    
+    /* 修复日历圆圈完美居中 */
+    .cal-day { width: 36px; height: 36px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto; }
+    .cal-day.today { background: #07c160; color: #fff; }
+    .cal-day.marked { position: relative; }
+    .cal-day.marked::after { content: ''; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; background: #ff4d4f; border-radius: 50%; }
+
+    /* 航旅 */
+    .flight-container { flex: 1; background: #f0f2f5; padding: 15px; overflow-y: auto; }
+    .ticket { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); position: relative; }
+    .ticket::before, .ticket::after { content: ''; position: absolute; top: 50%; width: 20px; height: 20px; background: #f0f2f5; border-radius: 50%; }
+    .ticket::before { left: -10px; }
+    .ticket::after { right: -10px; }
+    .tk-header { display: flex; justify-content: space-between; border-bottom: 1px dashed #ccc; padding-bottom: 15px; margin-bottom: 15px; color: #666; font-size: 14px; }
+    .tk-route { display: flex; justify-content: space-between; align-items: center; text-align: center; }
+    .tk-city .code { font-size: 24px; font-weight: bold; color: #333; }
+    .tk-city .name { font-size: 12px; color: #666; margin-top: 5px; }
+    .tk-arrow { color: #999; font-size: 20px; }
+    .tk-info { margin-top: 15px; display: flex; justify-content: space-between; color: #666; font-size: 13px; }
+    
+    /* 备忘录 */
+    .memo-container { flex: 1; background: #fff; padding: 20px; font-size: 16px; line-height: 1.6; color: #333; }
 </style>
 </head>
 <body>
-<div class="phone" aria-label="张宸的手机">
-  <div class="screen">
-    <section class="page lock active" id="lockPage">
-      <div class="status"><span id="statusTime">9:41</span><span class="status-icons"><span class="signal">▮▮▮</span><span>Wi-Fi</span><span class="battery"></span></span></div>
-      <div class="lock-sun"></div><div class="hill"></div><div class="hill two"></div>
-      <div class="lock-date" id="lockDate">星期四 · 10月22日</div>
-      <div class="lock-time" id="lockTime">21:08</div>
-      <div class="lock-note">有些消息，还是不要被爸爸发现比较好。</div>
-      <button class="unlock" id="unlockBtn"><span class="arrow">⌃</span>轻点进入张宸的手机</button>
-    </section>
 
-    <section class="page home" id="homePage">
-      <div class="status"><span id="homeTime">9:41</span><span class="status-icons"><span class="signal">▮▮▮</span><span>Wi-Fi</span><span class="battery"></span></span></div>
-      <div class="home-top"><div class="widget"><div class="small" id="homeDate">星期四，10月22日</div><div class="greeting">下午好，张宸。</div><div class="sub">今天也要记得早点回家。</div></div></div>
-      <div class="app-grid">
-        <button class="app" data-open="wechatPage"><span class="icon wechat">●●</span><span>微信</span></button>
-        <button class="app" data-open="photoPage"><span class="icon photos">🌈</span><span>照片</span></button>
-        <button class="app" data-open="notesPage"><span class="icon notes">▤</span><span>备忘录</span></button>
-        <button class="app" data-open="phonePage"><span class="icon phoneapp">☎</span><span>电话</span></button>
-        <button class="app" data-open="lockedPage"><span class="icon settings">⚙</span><span>设置</span></button>
-      </div>
-      <div class="dock">
-        <button class="app" data-open="phonePage" aria-label="电话"><span class="icon phoneapp">☎</span></button>
-        <button class="app" data-open="wechatPage" aria-label="微信"><span class="icon wechat">●●</span></button>
-        <button class="app" data-open="photoPage" aria-label="照片"><span class="icon photos">🌈</span></button>
-        <button class="app" data-open="notesPage" aria-label="备忘录"><span class="icon notes">▤</span></button>
-      </div>
-    </section>
+<div class="watermark">@1854kilo</div>
 
-    <section class="page app-page" id="wechatPage">
-      <div class="app-header"><button class="back" data-back>‹ 返回</button><div class="app-title">微信</div><button class="header-action" id="editChats">编辑</button></div>
-      <div class="wechat-list" id="chatList"></div>
-    </section>
-
-    <section class="page app-page" id="photoPage">
-      <div class="app-header"><button class="back" data-back>‹ 返回</button><div class="app-title">照片</div><button class="header-action" id="photoCount">全部</button></div>
-      <div class="photo-grid">
-        <button class="photo" data-photo="0"><span class="emoji">🏡</span><span class="caption">家里今天有人做饭</span></button>
-        <button class="photo" data-photo="1"><span class="emoji">🍰</span><span class="caption">不许偷吃我的蛋糕</span></button>
-        <button class="photo" data-photo="2"><span class="emoji">🚙</span><span class="caption">接我放学的车</span></button>
-        <button class="photo" data-photo="3"><span class="emoji">🍜</span><span class="caption">两家人出去吃饭</span></button>
-        <button class="photo" data-photo="4"><span class="emoji">🌿</span><span class="caption">周末出门</span></button>
-        <button class="photo" data-photo="5"><span class="emoji">🧸</span><span class="caption">左佑落在我家的东西</span></button>
-      </div>
-      <div class="photo-view" id="photoView"><button class="photo-back" id="closePhoto">‹ 返回相册</button><div class="big-photo" id="bigPhoto"><span id="bigEmoji">🏡</span><p id="bigCaption">照片说明</p></div></div>
-    </section>
-
-    <section class="page app-page notes-page" id="notesPage">
-      <div class="app-header"><button class="back" data-back>‹ 返回</button><div class="app-title">备忘录</div><button class="header-action">完成</button></div>
-      <div class="notes-list">
-        <div class="note-card"><strong>明天要做的事</strong>1. 记得带校卡<br>2. 放学之后等爸爸来接<br>3. 左佑说要把他的恐龙带来<br>4. 不要再把耳机落在对门了</div>
-        <div class="note-card"><strong>购物清单</strong>酸奶、草莓、爸爸说不能再买的零食。<br>（但可以问另一个爸爸。）</div>
-        <div class="note-card"><strong>未命名备忘录</strong>如果有人捡到我的手机……先别看微信！真的！</div>
-      </div>
-    </section>
-
-    <section class="page app-page" id="phonePage">
-      <div class="app-header"><button class="back" data-back>‹ 返回</button><div class="app-title">最近通话</div><button class="header-action">编辑</button></div>
-      <div class="wechat-list">
-        <div class="chat-row"><div class="avatar mom">🧑🏻</div><div class="chat-main"><div class="chat-name">爸爸（张泽禹）</div><div class="chat-preview">未接来电 · 记得回电话</div></div><div class="chat-meta">今天 17:42</div></div>
-        <div class="chat-row"><div class="avatar dad">🧑🏻‍🦱</div><div class="chat-main"><div class="chat-name">爸爸（张极）</div><div class="chat-preview">通话 2 分钟</div></div><div class="chat-meta">今天 16:30</div></div>
-        <div class="chat-row"><div class="avatar neighbor">🧒🏻</div><div class="chat-main"><div class="chat-name">左佑</div><div class="chat-preview">通话 36 秒</div></div><div class="chat-meta">昨天</div></div>
-      </div>
-    </section>
-
-    <section class="page app-page" id="lockedPage">
-      <div class="app-header"><button class="back" data-back>‹ 返回</button><div class="app-title">设置</div><span></span></div>
-      <div style="padding:25px;font-size:14px;line-height:1.8;color:#777">这部手机的设置暂时没有什么好看的。<br>还是去翻翻微信吧。</div>
-    </section>
-
-    <div class="chat-view" id="chatView">
-      <div class="chat-top"><button class="back" id="backToChats">‹ 返回</button><div class="chat-heading" id="chatHeading">家庭群</div><button class="header-action" id="chatMore">详情</button></div>
-      <div class="chat-messages" id="chatMessages"></div>
-      <div class="chat-input"><span style="font-size:19px">◉</span><div class="input-fake">发送消息</div><span class="send-hint">☺　＋</span></div>
+<div id="app">
+    <!-- 选机界面 -->
+    <div id="screen-select">
+        <div class="select-title">请选择一部手机</div>
+        <div class="phones-container">
+            <div class="phone-card" id="card-hw" onclick="openPhone('hw')">
+                <div class="phone-icon"></div>
+                <div class="name">妈妈的手机</div>
+                <div class="status" id="hw-status">可查看</div>
+            </div>
+            <div class="phone-card locked" id="card-ap" onclick="tryOpenAp()">
+                <div class="phone-icon"></div>
+                <div class="name">爸爸的手机</div>
+                <div class="status" id="ap-status">需解锁妈妈手机</div>
+            </div>
+        </div>
+        <div class="btn-reset" onclick="resetGame()">重置进度</div>
     </div>
-    <div class="toast" id="toast"></div>
-    <div class="home-indicator" id="homeIndicator"></div>
-  </div>
+
+    <!-- ================= 华为手机 (张泽禹) ================= -->
+    <div id="phone-hw" class="phone-screen hw-home-bg">
+        <div class="status-bar">
+            <span id="hw-time">18:03</span>
+            <div class="hw-notch"></div>
+            <div class="icons"><span>5G</span> <span>📶</span> <span>🔋</span></div>
+        </div>
+
+        <!-- 锁屏 -->
+        <div id="hw-lock" class="lock-screen hw-lock-bg" style="display: none;">
+            <div class="lock-back" onclick="goHome('hw')">‹</div>
+            <div class="lock-time-box">
+                <div class="time" id="hw-lock-time">18:03</div>
+                <div class="date">9月17日 星期四</div>
+            </div>
+            <div class="password-box" id="hw-pwd-box">
+                <div class="prompt">输入密码<br><span style="font-size:10px;color:#888;">好像是你的生日，要不要试试看极禹超话的诞生日期？</span></div>
+                <div class="password-display" id="hw-dots">
+                    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                </div>
+                <div class="keypad">
+                    <div class="key" onclick="inputPwd('hw', '1')">1</div>
+                    <div class="key" onclick="inputPwd('hw', '2')">2</div>
+                    <div class="key" onclick="inputPwd('hw', '3')">3</div>
+                    <div class="key" onclick="inputPwd('hw', '4')">4</div>
+                    <div class="key" onclick="inputPwd('hw', '5')">5</div>
+                    <div class="key" onclick="inputPwd('hw', '6')">6</div>
+                    <div class="key" onclick="inputPwd('hw', '7')">7</div>
+                    <div class="key" onclick="inputPwd('hw', '8')">8</div>
+                    <div class="key" onclick="inputPwd('hw', '9')">9</div>
+                    <div class="key fn" onclick="clearPwd('hw')">✖</div>
+                    <div class="key" onclick="inputPwd('hw', '0')">0</div>
+                    <div class="key fn" onclick="deletePwd('hw')">⌫</div>
+                </div>
+            </div>
+            <div style="height: 50px;"></div>
+        </div>
+
+        <!-- 桌面 -->
+        <div id="hw-home" class="home-screen" style="display: none;">
+            <div class="apps-grid">
+                <div class="app-icon" onclick="openApp('hw', 'wechat')">
+                    <div class="icon-img" style="background:#07c160;color:#fff;font-size:20px;">微信</div>
+                    <div class="app-name">微信</div>
+                </div>
+                <div class="app-icon" onclick="openApp('hw', 'album')">
+                    <div class="icon-img" style="background:#f5f5f5;">🖼️</div>
+                    <div class="app-name">相册</div>
+                </div>
+                <div class="app-icon" onclick="openApp('hw', 'weibo')">
+                    <div class="icon-img" style="background:#ff8140;color:#fff;font-size:20px;">微博</div>
+                    <div class="app-name">微博</div>
+                </div>
+                <div class="app-icon" onclick="openApp('hw', 'calendar')">
+                    <div class="icon-img" style="background:#fff;color:red;">📅</div>
+                    <div class="app-name">日历</div>
+                </div>
+                <div class="app-icon decor">
+                    <div class="icon-img" style="background:#333;color:#fff;font-size:12px;">无畏契约</div>
+                    <div class="app-name">源能行动</div>
+                </div>
+            </div>
+            <div class="dock">
+                <div class="app-icon decor"><div class="icon-img" style="font-size:24px;">📷</div></div>
+                <div class="app-icon decor"><div class="icon-img" style="font-size:24px;">⚙️</div></div>
+                <div class="app-icon decor"><div class="icon-img" style="font-size:24px;">📞</div></div>
+                <div class="app-icon decor"><div class="icon-img" style="font-size:24px;">👤</div></div>
+            </div>
+            <!-- Home Bar 只在桌面显示 -->
+            <div class="home-bar" onclick="goHome('hw')"></div>
+        </div>
+
+        <!-- 微信 App -->
+        <div id="hw-app-wechat" class="app-page">
+            <div class="nav-bar"><div class="back" onclick="closeApp('hw', 'wechat')">‹</div><div class="title">微信</div><div class="right"></div></div>
+            <div class="wechat-list" id="hw-wechat-list"></div>
+            <div class="wechat-bottom"><div style="display:flex;gap:40px;"><span style="color:#07c160;">💬 微信</span><span>👤 通讯录</span><span>🔍 发现</span><span>👤 我</span></div></div>
+        </div>
+
+        <!-- 聊天内页 -->
+        <div id="hw-app-chat" class="app-page">
+            <div class="nav-bar"><div class="back" onclick="backToWechat('hw')">‹</div><div class="title" id="hw-chat-title"></div><div class="right"></div></div>
+            <div class="chat-page">
+                <div class="chat-messages" id="hw-chat-messages"></div>
+                <div class="chat-input-area" id="hw-chat-input-area" style="display:none;">
+                    <input type="text" class="chat-input" id="hw-chat-input" placeholder="">
+                    <button class="chat-send" onclick="sendChat('hw')">发送</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 相册 App -->
+        <div id="hw-app-album" class="app-page">
+            <div class="nav-bar"><div class="back" onclick="closeApp('hw', 'album')">‹</div><div class="title">相册</div><div class="right"></div></div>
+            <div class="album-grid" id="hw-album-grid"></div>
+            <div class="album-viewer" id="hw-album-viewer" onclick="this.style.display='none'">
+                <img id="hw-album-img" src="">
+            </div>
+        </div>
+
+        <!-- 微博 App -->
+        <div id="hw-app-weibo" class="app-page">
+            <div class="nav-bar"><div class="back" onclick="closeApp('hw', 'weibo')">‹</div><div class="title">微博</div><div class="right"></div></div>
+            <div id="hw-weibo-lock" class="lock-page">
+                <div class="lock-back" onclick="closeApp('hw', 'weibo')">‹</div>
+                <h3>请输入应用锁密码</h3>
+                <div class="hint">提示：爸爸和你的生日组合</div>
+                <input type="password" id="hw-weibo-pwd" maxlength="6">
+                <button onclick="unlockWeibo('hw')">解锁</button>
+            </div>
+            <div class="weibo-list" id="hw-weibo-list" style="display:none;"></div>
+        </div>
+
+        <!-- 日历 App -->
+        <div id="hw-app-calendar" class="app-page">
+            <div class="nav-bar"><div class="back" onclick="closeApp('hw', 'calendar')">‹</div><div class="title">日历</div><div class="right"></div></div>
+            <div class="cal-container">
+                <div class="cal-header">9月</div>
+                <div class="cal-grid">
+                    <div style="color:#999;">日</div><div style="color:#999;">一</div><div style="color:#999;">二</div><div style="color:#999;">三</div><div style="color:#999;">四</div><div style="color:#999;">五</div><div style="color:#999;">六</div>
+                    <div></div><div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+                    <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div>
+                    <div>13</div><div>14</div><div>15</div><div>16</div><div><div class="cal-day today">17</div></div><div>18</div><div class="cal-day marked">19</div>
+                    <div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div>
+                    <div>27</div><div>28</div><div>29</div><div>30</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= 苹果手机 (张极) ================= -->
+    <div id="phone-ap" class="phone-screen ap-home-bg">
+        <div class="status-bar">
+            <span id="ap-time">18:03</span>
+            <div class="ap-notch"></div>
+            <div class="icons"><span>5G</span> <span>📶</span> <span>🔋</span></div>
+        </div>
+
+        <!-- 锁屏 -->
+        <div id="ap-lock" class="lock-screen ap-lock-bg" style="display: none;">
+            <div class="lock-back" onclick="goHome('ap')">‹</div>
+            <div class="lock-time-box">
+                <div class="time" id="ap-lock-time">18:03</div>
+                <div class="date">9月17日 星期四</div>
+            </div>
+            <div class="password-box" id="ap-pwd-box">
+                <div class="prompt">输入密码<br><span style="font-size:10px;color:#888;">爸爸妈妈的结婚纪念日，妈妈在上一个手机的微博里提过</span></div>
+                <div class="password-display" id="ap-dots">
+                    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                </div>
+                <div class="keypad">
+                    <div class="key" onclick="inputPwd('ap', '1')">1</div>
+                    <div class="key" onclick="inputPwd('ap', '2')">2</div>
+                    <div class="key" onclick="inputPwd('ap', '3')">3</div>
+                    <div class="key" onclick="inputPwd('ap', '4')">4</div>
+                    <div class="key" onclick="inputPwd('ap', '5')">5</div>
+                    <div class="key" onclick="inputPwd('ap', '6')">6</div>
+                    <div class="key" onclick="inputPwd('ap', '7')">7</div>
+                    <div class="key" onclick="inputPwd('ap', '8')">8</div>
+                    <div class="key" onclick="inputPwd('ap', '9')">9</div>
+                    <div class="key fn" onclick="clearPwd('ap')">✖</div>
+                    <div class="key" onclick="inputPwd('ap', '0')">0</div>
+                    <div class="key fn" onclick="deletePwd('ap')">⌫</div>
+                </div>
+            </div>
+            <div style="height: 50px;"></div>
+        </div>
+
+        <!-- 桌面 -->
+        <div id="ap-home" class="home-screen" style="display: none;">
+            <div class="apps-grid">
+                <div class="app-icon" onclick="openApp('ap', 'wechat')">
+                    <div class="icon-img" style="background:#07c160;color:#fff;font-size:20px;">微信</div>
+                    <div class="app-name">微信</div>
+                </div>
+                <div class="app-icon" onclick="openApp('ap', 'album')">
+                    <div class="icon-img" style="background:#f5f5f5;">🖼️</div>
+                    <div class="app-name">相册</div>
+                </div>
+                <div class="app-icon" onclick="openApp('ap', 'twitter')">
+                    <div class="icon-img" style="background:#000;color:#fff;font-size:24px;">𝕏</div>
+                    <div class="app-name">X</div>
+                </div>
+                <div class="app-icon" onclick="openApp('ap', 'calendar')">
+                    <div class="icon-img" style="background:#fff;color:red;">📅</div>
+                    <div class="app-name">日历</div>
+                </div>
+                <div class="app-icon" onclick="openApp('ap', 'flight')">
+                    <div class="icon-img" style="background:#0066cc;color:#fff;font-size:16px;">航旅</div>
+                    <div class="app-name">航旅纵横</div>
+                </div>
+                <div class="app-icon" onclick="openApp('ap', 'memo')">
+                    <div class="icon-img" style="background:#ffcc00;color:#333;">📝</div>
+                    <div class="app-name">备忘录</div>
+                </div>
+            </div>
+            <div class="dock">
+                <div class="app-icon decor"><div class="icon-img" style="font-size:24px;">📷</div></div>
+                <div class="app-icon decor"><div class="icon-img" style="font-size:24px;">⚙️</div></div>
+                <div class="app-icon decor"><div class="icon-img" style="font-size:24px;">📞</div></div>
+                <div class="app-icon decor"><div class="icon-img" style="font-size:24px;">👤</div></div>
+            </div>
+            <!-- Home Bar 只在桌面显示 -->
+            <div class="home-bar" onclick="goHome('ap')"></div>
+        </div>
+
+        <!-- 微信 App -->
+        <div id="ap-app-wechat" class="app-page">
+            <div class="nav-bar"><div class="back" onclick="closeApp('ap', 'wechat')">‹</div><div class="title">微信</div><div class="right"></div></div>
+            <div class="wechat-list" id="ap-wechat-list"></div>
+            <div class="wechat-bottom"><div style="display:flex;gap:40px;"><span style="color:#07c160;">💬 微信</span><span>👤 通讯录</span><span>🔍 发现</span><span>👤 我</span></div></div>
+        </div>
+        
+        <!-- 聊天内页 -->
+        <div id="ap-app-chat" class="app-page">
+            <div class="nav-bar"><div class="back" onclick="backToWechat('ap')">‹</div><div class="title" id="ap-chat-title"></div><div class="right"></div></div>
+            <div class="chat-page">
+                <div class="chat-messages" id="ap-chat-messages"></div>
+            </div>
+        </div>
+
+        <!-- 相册 App -->
+        <div id="ap-app-album" class="app-page">
+            <div class="nav-bar"><div class="back" onclick="closeApp('ap', 'album')">‹</div><div class="title">相册</div><div class="right"></div></div>
+            <div class="album-grid" id="ap-album-grid"></div>
+            <div class="album-viewer" id="ap-album-viewer" onclick="this.style.display='none'">
+                <img id="ap-album-img" src="">
+            </div>
+        </div>
+
+        <!-- 推特 App -->
+        <div id="ap-app-twitter" class="app-page">
+            <div class="nav-bar dark"><div class="back" onclick="closeApp('ap', 'twitter')">‹</div><div class="title">X</div><div class="right"></div></div>
+            <div id="ap-twitter-lock" class="lock-page" style="background:#15202b;color:#fff;">
+                <div class="lock-back" style="color:#fff;" onclick="closeApp('ap', 'twitter')">‹</div>
+                <h3>回答安全问题</h3>
+                <div class="hint" style="color:#8899a6;">爸爸妈妈这次要去哪？<br><span style="font-size:10px;">看看爸爸的机票吧</span></div>
+                <input type="text" id="ap-twitter-pwd" style="background:#253341;border:1px solid #38444d;color:#fff;">
+                <button onclick="unlockTwitter('ap')">解锁</button>
+            </div>
+            <div class="tw-list" id="ap-tw-list" style="display:none;"></div>
+        </div>
+
+        <!-- 日历 App -->
+        <div id="ap-app-calendar" class="app-page">
+            <div class="nav-bar"><div class="back" onclick="closeApp('ap', 'calendar')">‹</div><div class="title">日历</div><div class="right"></div></div>
+            <div class="cal-container">
+                <div class="cal-header">9月</div>
+                <div class="cal-grid">
+                    <div style="color:#999;">日</div><div style="color:#999;">一</div><div style="color:#999;">二</div><div style="color:#999;">三</div><div style="color:#999;">四</div><div style="color:#999;">五</div><div style="color:#999;">六</div>
+                    <div></div><div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+                    <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div>
+                    <div>13</div><div>14</div><div>15</div><div>16</div><div><div class="cal-day today">17</div></div><div>18</div><div class="cal-day marked">19</div>
+                    <div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div>
+                    <div>27</div><div>28</div><div>29</div><div>30</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 航旅纵横 -->
+        <div id="ap-app-flight" class="app-page">
+            <div class="nav-bar"><div class="back" onclick="closeApp('ap', 'flight')">‹</div><div class="title">航旅纵横</div><div class="right"></div></div>
+            <div class="flight-container">
+                <div class="ticket">
+                    <div class="tk-header"><span>已值机</span><span>9月18日 10:00</span></div>
+                    <div class="tk-route">
+                        <div class="tk-city"><div class="code">TFU</div><div class="name">成都天府 T3</div></div>
+                        <div class="tk-arrow">✈️</div>
+                        <div class="tk-city"><div class="code">VIE</div><div class="name">奥地利维也纳</div></div>
+                    </div>
+                    <div class="tk-info"><span>乘机人：张极</span><span>座位：12A</span></div>
+                </div>
+                <div class="ticket">
+                    <div class="tk-header"><span>已值机</span><span>9月18日 10:00</span></div>
+                    <div class="tk-route">
+                        <div class="tk-city"><div class="code">TFU</div><div class="name">成都天府 T3</div></div>
+                        <div class="tk-arrow">✈️</div>
+                        <div class="tk-city"><div class="code">VIE</div><div class="name">奥地利维也纳</div></div>
+                    </div>
+                    <div class="tk-info"><span>乘机人：张泽禹</span><span>座位：12B</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 备忘录 -->
+        <div id="ap-app-memo" class="app-page">
+            <div class="nav-bar"><div class="back" onclick="closeApp('ap', 'memo')">‹</div><div class="title">备忘录</div><div class="right"></div></div>
+            <div id="ap-memo-lock" class="lock-page">
+                <div class="lock-back" onclick="closeApp('ap', 'memo')">‹</div>
+                <h3>备忘录已锁定</h3>
+                <div class="hint">提示：妈妈和你的生日组合</div>
+                <input type="password" id="ap-memo-pwd" maxlength="6">
+                <button onclick="unlockMemo('ap')">解锁</button>
+            </div>
+            <div class="memo-container" id="ap-memo-content" style="display:none;">
+                <h3 style="margin-bottom:15px;">旅行准备</h3>
+                <p>1. 证件带齐。</p>
+                <p>2. 到了那边记得给宸宸打视频，答应她的。</p>
+                <p>3. 十周年快乐。</p>
+            </div>
+        </div>
+    </div>
 </div>
+
 <script>
-const $ = s => document.querySelector(s);
-const pages = [...document.querySelectorAll('.page')];
-let currentPage = 'lockPage';
-const chatData = [
- {name:'张家三口（3）',preview:'张泽禹：到家了说一声。',time:'17:42',avatar:'🏠',cls:'family',messages:[
-  {time:'今天 17:12'},
-  {from:'张泽禹',avatar:'🧑🏻',text:'放学了没有？'},
-  {from:'张宸',avatar:'🎀',me:true,text:'刚出来！'},
-  {from:'张极',avatar:'🧑🏻‍🦱',text:'站在校门里面等，别跑到马路边。'},
-  {from:'张宸',avatar:'🎀',me:true,text:'知道啦。你们谁来接我？'},
-  {from:'张泽禹',avatar:'🧑🏻',text:'我在路上，你爸爸今天下班早，已经在家了。'},
-  {from:'张极',avatar:'🧑🏻‍🦱',text:'给你留了饭。不要又说在学校吃过了。'},
-  {from:'张宸',avatar:'🎀',me:true,text:'……我今天真的没有吃很多。'},
-  {time:'17:42'},
-  {from:'张泽禹',avatar:'🧑🏻',text:'你这句话本身就很可疑。'}
- ]},
- {name:'对门一家人（3）',preview:'左航：左佑的水杯是不是在你家？',time:'16:58',avatar:'🚪',cls:'neighbor',messages:[
-  {time:'今天 16:36'},
-  {from:'左航',avatar:'🧑🏼',text:'张宸，问你一下，左佑的蓝色水杯是不是落你家了？'},
-  {from:'张宸',avatar:'🎀',me:true,text:'你问他本人啊，他刚才还在我房间找恐龙。'},
-  {from:'张峻豪',avatar:'🧑🏻‍🦱',text:'他现在正在客厅宣布自己没有去过你家。'},
-  {from:'左佑',avatar:'🦖',text:'我没有！我只是去看了一下！'},
-  {from:'张宸',avatar:'🎀',me:true,text:'那你的水杯为什么在我书包旁边。'},
-  {from:'左航',avatar:'🧑🏼',text:'收到，晚上过来拿。顺便把他带走。'},
-  {from:'左佑',avatar:'🦖',text:'爸爸！'},
-  {from:'张峻豪',avatar:'🧑🏻‍🦱',text:'这就叫证据确凿。'}
- ]},
- {name:'张宸 & 张泽禹',preview:'张泽禹：我给你带了草莓。',time:'15:21',avatar:'🍓',cls:'mom',messages:[
-  {time:'今天 15:21'},
-  {from:'张泽禹',avatar:'🧑🏻',text:'今天想吃什么？我下班路上买。'},
-  {from:'张宸',avatar:'🎀',me:true,text:'草莓！还有那个小蛋糕。'},
-  {from:'张泽禹',avatar:'🧑🏻',text:'你上次不是说不喜欢那个口味？'},
-  {from:'张宸',avatar:'🎀',me:true,text:'我现在又喜欢了。'},
-  {from:'张泽禹',avatar:'🧑🏻',text:'行。那你回家先洗手，不要一进门就翻袋子。'},
-  {from:'张宸',avatar:'🎀',me:true,text:'你怎么知道我会翻。'},
-  {from:'张泽禹',avatar:'🧑🏻',text:'因为你是我女儿。'}
- ]},
- {name:'张宸 & 张极',preview:'张极：到家给我发个消息。',time:'昨天',avatar:'🧸',cls:'dad',messages:[
-  {time:'昨天 18:04'},
-  {from:'张极',avatar:'🧑🏻‍🦱',text:'到家了吗？'},
-  {from:'张宸',avatar:'🎀',me:true,text:'到了。'},
-  {from:'张极',avatar:'🧑🏻‍🦱',text:'鞋放好，书包别扔沙发上。'},
-  {from:'张宸',avatar:'🎀',me:true,text:'你能不能先问我今天开不开心。'},
-  {from:'张极',avatar:'🧑🏻‍🦱',text:'那你今天开不开心？'},
-  {from:'张宸',avatar:'🎀',me:true,text:'现在不开心了。'},
-  {from:'张极',avatar:'🧑🏻‍🦱',text:'好。那先把书包放好，再不开心。'}
- ]},
- {name:'张宸 & 左佑',preview:'左佑：你不许把这个发群里。',time:'昨天',avatar:'🦖',cls:'duo',messages:[
-  {time:'昨天 20:11'},
-  {from:'左佑',avatar:'🦖',text:'你拍到没有？'},
-  {from:'张宸',avatar:'🎀',me:true,text:'拍到了。'},
-  {from:'左佑',avatar:'🦖',text:'不许发给我爸。'},
-  {from:'张宸',avatar:'🎀',me:true,text:'那你刚刚为什么要摆那个姿势。'},
-  {from:'左佑',avatar:'🦖',text:'我以为你在拍恐龙。'},
-  {from:'张宸',avatar:'🎀',me:true,text:'你就是恐龙。'},
-  {from:'左佑',avatar:'🦖',text:'……删掉。'},
-  {from:'张宸',avatar:'🎀',me:true,text:'我考虑一下。'}
- ]},
- {name:'两家人今天吃什么',preview:'张峻豪：投票，不许有人临时改主意。',time:'周一',avatar:'🍜',cls:'duo',messages:[
-  {time:'周一 11:08'},
-  {from:'张峻豪',avatar:'🧑🏻‍🦱',text:'今晚吃什么，投票。'},
-  {from:'张泽禹',avatar:'🧑🏻',text:'火锅。'},
-  {from:'左航',avatar:'🧑🏼',text:'你们上周才吃过。'},
-  {from:'张极',avatar:'🧑🏻‍🦱',text:'那就面。'},
-  {from:'张宸',avatar:'🎀',me:true,text:'火锅。'},
-  {from:'左佑',avatar:'🦖',text:'火锅！'},
-  {from:'张峻豪',avatar:'🧑🏻‍🦱',text:'两位小朋友的票不算。'},
-  {from:'张宸',avatar:'🎀',me:true,text:'那我现在开始哭。'},
-  {from:'左航',avatar:'🧑🏼',text:'火锅吧。'}
- ]}
-];
-const photoInfo = [
- ['🏡','家里今天有人做饭','张极说他只是顺手做了一点，张泽禹拍了照片发给张宸。'],
- ['🍰','不许偷吃我的蛋糕','本来写着“张宸专属”，后来不知道是谁又添了一行：左佑也可以吃一口。'],
- ['🚙','接我放学的车','蓝色车停在校门里面。张泽禹发消息说，过来的时候靠道路里面走。'],
- ['🍜','两家人出去吃饭','最后还是选了火锅。左佑说自己不挑食，点菜时却只挑自己喜欢的。'],
- ['🌿','周末出门','照片是张极拍的，画面边缘还有张泽禹伸过来挡镜头的手。'],
- ['🧸','左佑落在我家的东西','一只恐龙、一只水杯，还有一件左航说“这次一定要带回去”的外套。']
-];
-function setPage(id){pages.forEach(p=>p.classList.toggle('active',p.id===id));$('#chatView').classList.remove('active');currentPage=id;$('#homeIndicator').style.background=(id==='lockPage'||id==='photoPage')?'#fff':'#1d2428';}
-function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
-$('#unlockBtn').addEventListener('click',()=>setPage('homePage'));
-document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.open;if(id==='lockedPage')toast('设置里暂时没有新线索');setPage(id)}));
-document.querySelectorAll('[data-back]').forEach(b=>b.addEventListener('click',()=>setPage('homePage')));
-function renderChats(){const list=$('#chatList');list.innerHTML='';chatData.forEach((c,i)=>{const row=document.createElement('button');row.className='chat-row';row.innerHTML=`<div class="avatar ${c.cls}">${c.avatar}</div><div class="chat-main"><div class="chat-name">${c.name}</div><div class="chat-preview">${c.preview}</div></div><div class="chat-meta">${c.time}</div>`;row.addEventListener('click',()=>openChat(i));list.appendChild(row)})}
-function openChat(i){const c=chatData[i];$('#chatHeading').textContent=c.name;const box=$('#chatMessages');box.innerHTML='';c.messages.forEach(m=>{if(m.time){const d=document.createElement('div');d.className='time-divider';d.textContent=m.time;box.appendChild(d);return}const row=document.createElement('div');row.className='msg'+(m.me?' me':'');row.innerHTML=`<div class="msg-avatar">${m.avatar}</div><div class="msg-content">${m.me?'':`<div class="sender">${m.from}</div>`}<div class="bubble"></div></div>`;row.querySelector('.bubble').textContent=m.text;box.appendChild(row)});$('#chatView').classList.add('active');$('#chatMessages').scrollTop=0}
-$('#backToChats').addEventListener('click',()=>$('#chatView').classList.remove('active'));
-$('#chatMore').addEventListener('click',()=>toast('这是张宸手机里的聊天记录'));
-$('#editChats').addEventListener('click',()=>toast('这里没有需要编辑的内容'));
-document.querySelectorAll('[data-photo]').forEach(b=>b.addEventListener('click',()=>{const p=photoInfo[Number(b.dataset.photo)];$('#bigEmoji').textContent=p[0];$('#bigCaption').textContent=p[1]+'\\n'+p[2];$('#photoView').classList.add('active')}));
-$('#closePhoto').addEventListener('click',()=>$('#photoView').classList.remove('active'));
-$('#photoCount').addEventListener('click',()=>toast('共 6 张照片'));
-function updateClock(){const d=new Date();const time=d.toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',hour12:false});const date=d.toLocaleDateString('zh-CN',{month:'long',day:'numeric',weekday:'long'});$('#statusTime').textContent=time;$('#homeTime').textContent=time;$('#lockTime').textContent=time;$('#lockDate').textContent=date.replace('星期','星期');$('#homeDate').textContent=date}
-renderChats();updateClock();setInterval(updateClock,30000);
+    // ==== 全局状态管理 ====
+    const state = {
+        hwUnlocked: false,
+        hwWeiboUnlocked: false,
+        hwWeiboViewed: false,
+        apUnlocked: false, 
+        hwDoorMsgSent: false,
+        apMemoUnlocked: false,
+        apTwitterUnlocked: false,
+        currentChat: null,
+        virtualMinutes: 3 
+    };
+
+    function saveState() {
+        localStorage.setItem('anniversaryState', JSON.stringify(state));
+        updateUI();
+    }
+
+    function loadState() {
+        const saved = localStorage.getItem('anniversaryState');
+        if (saved) {
+            Object.assign(state, JSON.parse(saved));
+        }
+    }
+
+    function resetGame() {
+        if(confirm("确定要重置全部进度吗？")) {
+            localStorage.removeItem('anniversaryState');
+            location.reload();
+        }
+    }
+
+    // ==== 时间流动 ====
+    function updateTime() {
+        let h = 18;
+        let m = state.virtualMinutes;
+        if (m >= 60) {
+            h += Math.floor(m / 60);
+            m = m % 60;
+        }
+        const timeStr = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+        document.getElementById('hw-time').innerText = timeStr;
+        document.getElementById('hw-lock-time').innerText = timeStr;
+        document.getElementById('ap-time').innerText = timeStr;
+        document.getElementById('ap-lock-time').innerText = timeStr;
+    }
+    setInterval(() => {
+        state.virtualMinutes++;
+        updateTime();
+    }, 60000);
+
+    // ==== 页面切换逻辑 ====
+    function openPhone(phone) {
+        state.currentPhone = phone;
+        document.getElementById('screen-select').style.display = 'none';
+        document.getElementById(`phone-${phone}`).style.display = 'flex';
+        document.getElementById(`${phone}-home`).style.display = 'none';
+        document.getElementById(`${phone}-lock`).style.display = 'flex';
+        
+        if(phone === 'hw') {
+            if(!state.hwUnlocked) {
+                document.getElementById('hw-lock').style.display = 'flex';
+                document.getElementById('hw-home').style.display = 'none';
+            } else {
+                document.getElementById('hw-lock').style.display = 'none';
+                document.getElementById('hw-home').style.display = 'flex';
+            }
+        }
+        
+        if(phone === 'ap') {
+            if(!state.apUnlocked) {
+                document.getElementById('ap-lock').style.display = 'flex';
+                document.getElementById('ap-home').style.display = 'none';
+            } else {
+                document.getElementById('ap-lock').style.display = 'none';
+                document.getElementById('ap-home').style.display = 'flex';
+            }
+        }
+    }
+
+    function tryOpenAp() {
+        if(!state.apUnlocked) {
+            alert("爸爸的手机似乎有重要信息，但需要先解开妈妈的手机。");
+            return;
+        }
+        openPhone('ap');
+    }
+
+    function goHome(phone) {
+        document.getElementById(`phone-${phone}`).style.display = 'none';
+        document.getElementById(`phone-${phone}`).classList.remove('active');
+        document.querySelectorAll(`#phone-${phone} .app-page`).forEach(el => el.classList.remove('active'));
+        document.getElementById('screen-select').style.display = 'flex';
+    }
+
+    function openApp(phone, app) {
+        document.getElementById(`${phone}-app-${app}`).classList.add('active');
+        if(app === 'wechat') renderWechatList(phone);
+        if(app === 'album') renderAlbum(phone);
+        if(app === 'weibo') {
+            if(state.hwWeiboUnlocked) {
+                document.getElementById('hw-weibo-lock').style.display = 'none';
+                document.getElementById('hw-weibo-list').style.display = 'block';
+                renderWeibo();
+            } else {
+                document.getElementById('hw-weibo-lock').style.display = 'flex';
+                document.getElementById('hw-weibo-list').style.display = 'none';
+            }
+        }
+        if(app === 'twitter') {
+            if(state.apTwitterUnlocked) {
+                document.getElementById('ap-twitter-lock').style.display = 'none';
+                document.getElementById('ap-tw-list').style.display = 'block';
+                renderTwitter();
+            } else {
+                document.getElementById('ap-twitter-lock').style.display = 'flex';
+                document.getElementById('ap-tw-list').style.display = 'none';
+            }
+        }
+        if(app === 'memo') {
+            if(state.apMemoUnlocked) {
+                document.getElementById('ap-memo-lock').style.display = 'none';
+                document.getElementById('ap-memo-content').style.display = 'block';
+            } else {
+                document.getElementById('ap-memo-lock').style.display = 'flex';
+                document.getElementById('ap-memo-content').style.display = 'none';
+            }
+        }
+    }
+
+    function closeApp(phone, app) {
+        document.getElementById(`${phone}-app-${app}`).classList.remove('active');
+        if(app === 'weibo') {
+            if(state.hwWeiboUnlocked && !state.hwWeiboViewed) {
+                state.hwWeiboViewed = true;
+                state.apUnlocked = true;
+                saveState();
+                alert("似乎看到了什么关键的日期信息，爸爸的手机好像可以打开了。");
+            }
+        }
+    }
+
+    // ==== 密码解锁 ====
+    let currentPwd = { hw: '', ap: '' };
+    function inputPwd(phone, num) {
+        if(currentPwd[phone].length < 4) {
+            currentPwd[phone] += num;
+            updateDots(phone);
+            if(currentPwd[phone].length === 4) {
+                setTimeout(() => checkPwd(phone), 200);
+            }
+        }
+    }
+    function deletePwd(phone) {
+        currentPwd[phone] = currentPwd[phone].slice(0, -1);
+        updateDots(phone);
+    }
+    function clearPwd(phone) {
+        currentPwd[phone] = '';
+        updateDots(phone);
+    }
+    function updateDots(phone) {
+        const dots = document.querySelectorAll(`#${phone}-dots .dot`);
+        dots.forEach((dot, index) => {
+            if(index < currentPwd[phone].length) dot.classList.add('filled');
+            else dot.classList.remove('filled');
+        });
+    }
+    function checkPwd(phone) {
+        const pwd = currentPwd[phone];
+        if(phone === 'hw' && pwd === '0418') {
+            state.hwUnlocked = true;
+            saveState();
+            document.getElementById('hw-lock').style.display = 'none';
+            document.getElementById('hw-home').style.display = 'flex';
+        } else if(phone === 'ap' && pwd === '0919') {
+            state.apUnlocked = true;
+            saveState();
+            document.getElementById('ap-lock').style.display = 'none';
+            document.getElementById('ap-home').style.display = 'flex';
+        } else {
+            const box = document.getElementById(`${phone}-pwd-box`);
+            box.classList.add('shake');
+            setTimeout(() => box.classList.remove('shake'), 300);
+            clearPwd(phone);
+        }
+    }
+
+    // ==== 微信渲染 ====
+    const wechatData = {
+        hw: [
+            { id: '宸宸', name: '宸宸', avatar: 'https://picui.ogmua.cn/s1/2026/10/28/6ae10e83256fa.webp', msgs: [
+                { type: 'time', text: '17:26' },
+                { type: 'voice', isMe: false, len: '3秒', text: '妈妈，你在哪？' },
+                { type: 'voice', isMe: true, len: '2秒', text: '马上啦宸宸。' },
+                { type: 'voice', isMe: true, len: '4秒', text: '我等爸爸一块过来。' },
+                { type: 'voice', isMe: false, len: '5秒', text: '我有东西，给你看。' },
+                { type: 'voice', isMe: true, len: '6秒', text: '我看看，我宝宝是不是得小粘贴了？' },
+                { type: 'voice', isMe: false, len: '1秒', text: '不是。' },
+                { type: 'voice', isMe: false, len: '8秒', text: '我在，后花园挖了一盒蚯蚓，妈妈。' },
+                { type: 'voice', isMe: true, len: '1秒', text: '哎呀。' },
+                { type: 'voice', isMe: true, len: '4秒', text: '这么棒呢我闺女。' },
+                { type: 'voice', isMe: true, len: '6秒', text: '待会不给妈妈，送爸爸。' },
+                { type: 'voice', isMe: false, len: '7秒', text: '可是我不想给爸爸。' },
+                { type: 'voice', isMe: true, len: '2秒', text: '听妈妈话。' },
+                { type: 'voice', isMe: true, len: '6秒', text: '你送爸爸，爸爸也有东西送你。' },
+                { type: 'voice', isMe: false, len: '1秒', text: '真的吗？' },
+                { type: 'voice', isMe: true, len: '1秒', text: '对呀。' },
+                { type: 'voice', isMe: true, len: '5秒', text: '爸爸送你一顿皮带揍屁屁。' },
+                { type: 'voice', isMe: false, len: '2秒', text: '' } 
+            ]},
+            { id: '2', name: '2', avatar: 'https://picui.ogmua.cn/s1/2026/10/28/6ae10e9a9262c.webp', msgs: [
+                { type: 'text', isMe: true, text: '到哪了' },
+                { type: 'text', isMe: false, text: '吃不吃烤红苕' },
+                { type: 'text', isMe: false, text: '五街了' },
+                { type: 'text', isMe: false, text: '两个红绿灯' },
+                { type: 'text', isMe: true, text: '现在已经有烤红薯了吗 吃' },
+                { type: 'text', isMe: true, text: '那来捎我一段' },
+                { type: 'text', isMe: true, text: '我在也在这条路上 还有500米到 不想走了' },
+                { type: 'text', isMe: false, text: '我真服了' },
+                { type: 'text', isMe: true, text: '其实我就是在等你啊' },
+                { type: 'text', isMe: true, text: '张宸待会看到我俩一起来接她 肯定开心得很' },
+                { type: 'text', isMe: false, text: '然后就又被放左航家了' },
+                { type: 'text', isMe: true, text: '咋的' },
+                { type: 'text', isMe: true, text: '不然要把她一块带上出门' },
+                { type: 'text', isMe: false, text: '那还是就我们吧。' },
+                { type: 'text', isMe: false, text: '少儿不宜' },
+                { type: 'time', text: '17:23' },
+                { type: 'text', isMe: false, text: '好烫好烫' },
+                { type: 'image', isMe: false, src: 'https://picui.ogmua.cn/s1/2026/10/28/6ae0edc308227.webp' },
+                { type: 'text', isMe: true, text: '烤你唧唧' },
+                { type: 'text', isMe: false, text: '?' },
+                { type: 'text', isMe: false, text: '我哪有这么小' }
+            ]},
+            { id: '对门有狗（4）', name: '对门有狗（4）', isGroup: true, msgs: [
+                { type: 'time', text: '17:18' },
+                { type: 'text', isMe: false, sender: '张峻豪', text: '@有孩爱狗男 摸蛆在？' },
+                { type: 'text', isMe: false, sender: '张极', text: '慌啥子' },
+                { type: 'text', isMe: false, sender: '张极', text: '今天五点二十下课的嘛' },
+                { type: 'text', isMe: false, sender: '张极', text: '反正张宸从我们手里过一手就去你家了' },
+                { type: 'text', isMe: false, sender: '左航', text: '回来路上开慢点' },
+                { type: 'text', isMe: false, sender: '张峻豪', text: '嗯！' },
+                { type: 'text', isMe: false, sender: '左航', text: '后备箱有个前几天买的花瓶' },
+                { type: 'text', isMe: false, sender: '左航', text: '你今天要再忘了拿上楼给老子等着' },
+                { type: 'text', isMe: false, sender: '张峻豪', text: '哦，' },
+                { type: 'text', isMe: false, sender: '张极', text: '🤡' },
+                { type: 'text', isMe: false, sender: '张峻豪', text: '爬' }
+            ]},
+            { id: '左航', name: '左航', avatar: 'https://picui.ogmua.cn/s1/2026/10/28/6ae10eabefe62.webp', msgs: [
+                { type: 'text', isMe: true, text: '要出去小一周 张宸的生活费收了' },
+                { type: 'text', isMe: true, text: '[转账 666元]' },
+                { type: 'text', isMe: false, text: '😂😂，' },
+                { type: 'text', isMe: false, text: '老子要枪皮' },
+                { type: 'text', isMe: false, text: '我到时候抽转盘你给我报销' },
+                { type: 'text', isMe: true, text: '贼娃子' },
+                { type: 'text', isMe: true, text: '我的谁来报销' },
+                { type: 'text', isMe: false, text: '关我啥事' },
+                { type: 'text', isMe: false, text: '小一周的背身都送了 到时候还不给你报销枪皮' },
+                { type: 'text', isMe: false, text: '你离婚算了？' },
+                { type: 'text', isMe: true, text: '有道理。' },
+                { type: 'time', text: '17:04' },
+                { type: 'voice', isMe: false, len: '6秒', text: '你家大门常打开，密码告诉我来。' },
+                { type: 'text', isMe: true, text: '唱的啥玩意' },
+                { type: 'text', isMe: true, text: '听不清' },
+                { type: 'text', isMe: false, text: '老子。' },
+                { type: 'text', isMe: false, text: '大门密码多少' },
+                { type: 'text', isMe: false, text: '我用下你那个硬盘' },
+                { type: 'text', isMe: true, text: '嘶。' },
+                { type: 'text', isMe: true, text: '我有点忘了呢' },
+                { type: 'text', isMe: false, text: '?' },
+                { type: 'text', isMe: true, text: '顺序有点忘了' },
+                { type: 'text', isMe: true, text: '应该是我跟张极生日的组合' }
+            ]}
+        ],
+        ap: [
+            { id: '幺女', name: '幺女', avatar: 'https://picui.ogmua.cn/s1/2026/10/28/6ae10e83256fa.webp', msgs: [
+                { type: 'time', text: '17:28' },
+                { type: 'voice', isMe: false, len: '5秒', text: '爸爸，为什么要打我？' },
+                { type: 'voice', isMe: true, len: '1秒', text: '啊？' },
+                { type: 'voice', isMe: true, len: '4秒', text: '我和妈妈马上到了。' },
+                { type: 'voice', isMe: false, len: '10秒', text: '我挖了一盒蚯蚓，妈妈说你要拿皮带揍我。' },
+                { type: 'voice', isMe: false, len: '10秒', text: '每次都要我等，马上门口又只有我一个人了。' },
+                { type: 'voice', isMe: true, len: '4秒', text: '挖完好好洗手手没？' },
+                { type: 'voice', isMe: false, len: '1秒', text: '洗了。' },
+                { type: 'voice', isMe: true, len: '5秒', text: '那留着我拿去钓鱼。不揍你。' },
+                { type: 'voice', isMe: false, len: '1秒', text: '嗯。' }
+            ]},
+            { id: '我宝', name: '我宝', avatar: 'https://picui.ogmua.cn/s1/2026/10/28/6ae10e55bc37e.webp', msgs: [
+                { type: 'text', isMe: false, text: '到哪了' },
+                { type: 'text', isMe: true, text: '吃不吃烤红苕' },
+                { type: 'text', isMe: true, text: '五街了' },
+                { type: 'text', isMe: true, text: '两个红绿灯' },
+                { type: 'text', isMe: false, text: '现在已经有烤红薯了吗 吃' },
+                { type: 'text', isMe: false, text: '那来捎我一段' },
+                { type: 'text', isMe: false, text: '我在也在这条路上 还有500米到 不想走了' },
+                { type: 'text', isMe: true, text: '我真服了' },
+                { type: 'text', isMe: false, text: '其实我就是在等你啊' },
+                { type: 'text', isMe: false, text: '张宸待会看到我俩一起来接她肯定开心得很' },
+                { type: 'text', isMe: true, text: '然后就又被放左航家了' },
+                { type: 'text', isMe: false, text: '咋的' },
+                { type: 'text', isMe: false, text: '不然要把她一块带上出门' },
+                { type: 'text', isMe: true, text: '那还是就我们吧。' },
+                { type: 'text', isMe: true, text: '少儿不宜' },
+                { type: 'time', text: '17:23' },
+                { type: 'text', isMe: true, text: '好烫好烫' },
+                { type: 'image', isMe: true, src: 'https://picui.ogmua.cn/s1/2026/10/28/6ae0edc308227.webp' },
+                { type: 'text', isMe: false, text: '烤你唧唧' },
+                { type: 'text', isMe: true, text: '?' },
+                { type: 'text', isMe: true, text: '我哪有这么小' }
+            ]},
+            { id: '对门有狗（4）', name: '对门有狗（4）', isGroup: true, msgs: [
+                { type: 'time', text: '17:18' },
+                { type: 'text', isMe: false, sender: '儿', text: '@有孩爱狗男 摸蛆在？' },
+                { type: 'text', isMe: true, text: '慌啥子' },
+                { type: 'text', isMe: true, text: '今天五点二十下课的嘛' },
+                { type: 'text', isMe: true, text: '反正张宸从我们手里过一手就去你家了' },
+                { type: 'text', isMe: false, sender: '左航', text: '回来路上开慢点' },
+                { type: 'text', isMe: false, sender: '儿', text: '嗯！' },
+                { type: 'text', isMe: false, sender: '左航', text: '后备箱有个前几天买的花瓶' },
+                { type: 'text', isMe: false, sender: '左航', text: '你今天要再忘了拿上楼给老子等着' },
+                { type: 'text', isMe: false, sender: '儿', text: '哦，' },
+                { type: 'text', isMe: true, text: '🤡' },
+                { type: 'text', isMe: false, sender: '儿', text: '爬' }
+            ]},
+            { id: '儿', name: '儿', avatar: 'https://picui.ogmua.cn/s1/2026/10/28/6ae10e70e4a0c.webp', msgs: [
+                { type: 'text', isMe: false, text: '那个那个' },
+                { type: 'text', isMe: true, text: '哪个？' },
+                { type: 'text', isMe: true, text: '两棍子打不出一个屁' },
+                { type: 'text', isMe: false, text: '张宸儿生活费给一下' },
+                { type: 'text', isMe: true, text: '哇塞' },
+                { type: 'text', isMe: false, text: '赖子？' },
+                { type: 'text', isMe: true, text: '上回张泽禹一穿三的麻将钱给了没' },
+                { type: 'text', isMe: true, text: '来' },
+                { type: 'text', isMe: false, text: '打起耍的啊 我记得' },
+                { type: 'text', isMe: true, text: '赖子' },
+                { type: 'time', text: '16:23' },
+                { type: 'text', isMe: false, text: '给我带瓶wienerblut' },
+                { type: 'text', isMe: false, text: '这个味道' },
+                { type: 'image', isMe: false, src: 'https://picui.ogmua.cn/s1/2026/10/28/6ae1c4a44f302.webp' },
+                { type: 'text', isMe: true, text: '看起可以' },
+                { type: 'text', isMe: true, text: '我买给张泽禹' },
+                { type: 'text', isMe: true, text: '你去换个味道' },
+                { type: 'text', isMe: false, text: '你是不是狗？' }
+            ]}
+        ]
+    };
+
+    function renderWechatList(phone) {
+        const list = document.getElementById(`${phone}-wechat-list`);
+        list.innerHTML = '';
+        wechatData[phone].forEach(chat => {
+            const lastMsg = chat.msgs[chat.msgs.length - 1];
+            let preview = '';
+            if(lastMsg.type === 'text') preview = lastMsg.text;
+            else if(lastMsg.type === 'voice') preview = '[语音]';
+            else if(lastMsg.type === 'image') preview = '[图片]';
+            
+            if(lastMsg.sender && !chat.isGroup) preview = `${lastMsg.sender}: ${preview}`;
+
+            const div = document.createElement('div');
+            div.className = 'wechat-item';
+            div.onclick = () => openChat(phone, chat.id);
+            
+            let avatarHtml = '';
+            if (chat.isGroup) {
+                if (phone === 'hw') {
+                    avatarHtml = `<div class="group-avatar">
+                        <img src="https://picui.ogmua.cn/s1/2026/10/28/6ae10e55bc37e.webp">
+                        <img src="https://picui.ogmua.cn/s1/2026/10/28/6ae10e70e4a0c.webp">
+                        <img src="https://picui.ogmua.cn/s1/2026/10/28/6ae10eabefe62.webp">
+                        <img src="https://picui.ogmua.cn/s1/2026/10/28/6ae10e9a9262c.webp">
+                    </div>`;
+                } else {
+                    avatarHtml = `<div class="group-avatar">
+                        <img src="https://picui.ogmua.cn/s1/2026/10/28/6ae10e9a9262c.webp">
+                        <img src="https://picui.ogmua.cn/s1/2026/10/28/6ae10e70e4a0c.webp">
+                        <img src="https://picui.ogmua.cn/s1/2026/10/28/6ae10eabefe62.webp">
+                        <img src="https://picui.ogmua.cn/s1/2026/10/28/6ae10e55bc37e.webp">
+                    </div>`;
+                }
+            } else {
+                avatarHtml = `<img src="${chat.avatar}" alt="">`;
+            }
+
+            div.innerHTML = `
+                ${avatarHtml}
+                <div class="info">
+                    <h4>${chat.name}</h4>
+                    <p>${preview}</p>
+                </div>
+            `;
+            list.appendChild(div);
+        });
+    }
+
+    function openChat(phone, chatId) {
+        state.currentChat = chatId;
+        const chatData = wechatData[phone].find(c => c.id === chatId);
+        document.getElementById(`${phone}-app-chat`).classList.add('active');
+        document.getElementById(`${phone}-chat-title`).innerText = chatData.name;
+        
+        const msgContainer = document.getElementById(`${phone}-chat-messages`);
+        msgContainer.innerHTML = '';
+        chatData.msgs.forEach(msg => renderMessage(phone, msgContainer, msg, chatData.avatar));
+
+        const inputArea = document.getElementById(`${phone}-chat-input-area`);
+        if(phone === 'hw' && chatId === '左航') {
+            inputArea.style.display = 'flex';
+            const input = document.getElementById('hw-chat-input');
+            if(!state.hwDoorMsgSent) {
+                input.placeholder = "按照对话提示给干妈发送正确的大门密码";
+            } else {
+                input.placeholder = "";
+            }
+        } else {
+            if(inputArea) inputArea.style.display = 'none';
+        }
+
+        setTimeout(() => { msgContainer.scrollTop = msgContainer.scrollHeight; }, 50);
+    }
+
+    function renderMessage(phone, container, msg, chatAvatar) {
+        if(msg.type === 'time') {
+            const timeDiv = document.createElement('div');
+            timeDiv.className = 'msg-time';
+            timeDiv.innerText = msg.text;
+            container.appendChild(timeDiv);
+            return;
+        }
+
+        const row = document.createElement('div');
+        row.className = `msg-row ${msg.isMe ? 'right' : 'left'}`;
+        
+        let avatarUrl = msg.isMe ? (phone === 'hw' ? 'https://picui.ogmua.cn/s1/2026/10/28/6ae10e55bc37e.webp' : 'https://picui.ogmua.cn/s1/2026/10/28/6ae10e9a9262c.webp') : chatAvatar;
+        
+        // 群聊头像判定
+        if (msg.sender) {
+            if (msg.sender === '左航') avatarUrl = 'https://picui.ogmua.cn/s1/2026/10/28/6ae10eabefe62.webp';
+            if (msg.sender === '张极' || msg.sender === '我') avatarUrl = 'https://picui.ogmua.cn/s1/2026/10/28/6ae10e9a9262c.webp';
+            if (msg.sender === '张峻豪' || msg.sender === '儿') avatarUrl = 'https://picui.ogmua.cn/s1/2026/10/28/6ae10e70e4a0c.webp';
+        }
+
+        let contentHtml = '';
+        if(msg.type === 'text') {
+            // 使用 span 包裹文本，单独处理 pre-wrap 保留空格
+            contentHtml = `<span style="white-space: pre-wrap; word-break: break-word;">${msg.text}</span>`;
+        } else if(msg.type === 'image') {
+            contentHtml = `<img src="${msg.src}" style="max-width:100%;border-radius:5px;" onclick="viewImage('${msg.src}')">`;
+        } else if(msg.type === 'voice') {
+            if(msg.text) {
+                contentHtml = `
+                    <div class="voice-content" onclick="this.nextElementSibling.style.display='block'">
+                        <span>${msg.len}</span>
+                        <span class="voice-icon">🎤</span>
+                    </div>
+                    <div class="voice-trans">${msg.text}</div>
+                `;
+            } else {
+                contentHtml = `
+                    <div class="voice-content">
+                        <span>${msg.len}</span>
+                        <span class="voice-icon">🎤</span>
+                    </div>
+                `;
+            }
+        }
+
+        // 不再渲染 senderName
+        row.innerHTML = `
+            <img class="avatar" src="${avatarUrl}">
+            <div class="msg-bubble">
+                ${contentHtml}
+            </div>
+        `;
+        container.appendChild(row);
+    }
+
+    function backToWechat(phone) {
+        document.getElementById(`${phone}-app-chat`).classList.remove('active');
+        state.currentChat = null;
+    }
+
+    function sendChat(phone) {
+        const input = document.getElementById(`${phone}-chat-input`);
+        const val = input.value.trim();
+        if(!val) return;
+
+        if(phone === 'hw' && state.currentChat === '左航' && !state.hwDoorMsgSent) {
+            if(val === '203430') {
+                input.value = '';
+                input.placeholder = '';
+                state.hwDoorMsgSent = true;
+                saveState();
+                
+                const msgContainer = document.getElementById(`${phone}-chat-messages`);
+                const msgObj = { type: 'text', isMe: true, text: '大门密码' };
+                renderMessage(phone, msgContainer, msgObj, '');
+                
+                setTimeout(() => {
+                    const reply = { type: 'text', isMe: false, text: 'OK，收到了。' };
+                    renderMessage(phone, msgContainer, reply, 'https://picui.ogmua.cn/s1/2026/10/28/6ae10eabefe62.webp');
+                    msgContainer.scrollTop = msgContainer.scrollHeight;
+                }, 1000);
+                
+                msgContainer.scrollTop = msgContainer.scrollHeight;
+            } else {
+                alert("密码不正确，请按照对话提示输入正确的数字。");
+            }
+        } else {
+            input.value = '';
+        }
+    }
+
+    // ==== 严格分离相册链接 ====
+    const hwAlbum = [
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1149bd02bd.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1149bdba53.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1149be076c.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1149bdf76c.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1149c1b018.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1149d38ea7.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1149d42e7b.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1149d6545c.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1149d9a084.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1149dbbf28.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1149e72bdb.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1149eb2f49.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1149ee8573.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1149f1a087.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1149f4628e.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1149fcc46a.webp"
+    ];
+    
+    const apAlbum = [
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae11886e44fe.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae118871dc8b.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1188746264.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1188745140.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1188747b25.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae11888316e3.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae118884beaa.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1188873829.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1188891eab.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae11888ee39b.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae118899351d.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae11889a8df3.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae11889bfc11.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1188a0e250.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1188a6bc76.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1188b03049.webp",
+        "https://picui.ogmua.cn/s1/2026/10/28/6ae1188aee5e5.webp"
+    ];
+
+    function renderAlbum(phone) {
+        const grid = document.getElementById(`${phone}-album-grid`);
+        grid.innerHTML = '';
+        const images = phone === 'hw' ? hwAlbum : apAlbum;
+        const shuffled = [...images].sort(() => Math.random() - 0.5);
+        
+        shuffled.forEach(src => {
+            const div = document.createElement('div');
+            div.className = 'album-item';
+            div.onclick = () => {
+                document.getElementById(`${phone}-album-img`).src = src;
+                document.getElementById(`${phone}-album-viewer`).style.display = 'flex';
+            };
+            div.innerHTML = `<img src="${src}">`;
+            grid.appendChild(div);
+        });
+    }
+
+    function viewImage(src) {
+        alert("查看大图：" + src);
+    }
+
+    // ==== 微博渲染 ====
+    function unlockWeibo(phone) {
+        const pwd = document.getElementById('hw-weibo-pwd').value;
+        if(pwd === '203418') {
+            state.hwWeiboUnlocked = true;
+            saveState();
+            document.getElementById('hw-weibo-lock').style.display = 'none';
+            document.getElementById('hw-weibo-list').style.display = 'block';
+            renderWeibo();
+        } else {
+            alert("密码错误，请重新输入");
+        }
+    }
+
+    const weiboData = [
+        { time: "两年前，3.12", content: "春天快来了，每天天气都好好，但是不喜欢太阳太大。凑近他能看到小皱纹了。" },
+        { time: "五年前，9.2", content: "上小班了" },
+        { time: "七年前，7.26", content: "哎呀我家财星宸宸又给我收一笔养老钱" },
+        { time: "七年前，4.18", content: "长得跟他一样一样的" },
+        { time: "八年前，11.15", content: "耍起" },
+        { time: "八年前，9.3", content: "张宸张宸" },
+        { time: "八年前，9.3", content: "居然就已经取好名字了。" },
+        { time: "九年前，11.22", content: "讨厌成都的冬天" },
+        { time: "九年前，5.1", content: "按时起床劳动了红色被子简直难睡" },
+        { time: "九年前，2.3", content: "数红包数得手抽筋我操" },
+        { time: "十年前，12.30", content: "又来第比利斯闻马粪了再次入住上次没睡成的小木屋爽干。" },
+        { time: "十年前，9.19", content: "就这么结婚了我也是傻子" },
+        { time: "十年前，9.19", content: "傻子。" },
+        { time: "十年前，9.19", content: "WEKNOW" },
+        { time: "十年前，9.19", content: "分享单曲《WhoKnows》" },
+        { time: "十年前，9.19", content: "分享单曲《memories》" },
+        { time: "十年前，9.15", content: "都快忘了有个这个号" },
+        { time: "十一年前，12.31", content: "报销偷偷多报两千三刀尖舔血的一个新年" },
+        { time: "十一年前，11.14", content: "给免免又选生日礼物呢过来问我是哪个女的" },
+        { time: "十一年前，10.23", content: "领导走好" },
+        { time: "十一年前，9.19", content: "不好我的屁股。" },
+        { time: "十一年前，9.17", content: "每天忙得要死然后耳朵边还有一个史官天天暗示纪念日要到了" },
+        { time: "十一年前，9.7", content: "有时候不知道老跟我闹什么。哄人这个技术活如果有比赛我可以拿第一了现在" },
+        { time: "十一年前，8.27", content: "脑瘫咋当上领导的" }
+    ];
+
+    function renderWeibo() {
+        const list = document.getElementById('hw-weibo-list');
+        list.innerHTML = '';
+        weiboData.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'weibo-item';
+            div.innerHTML = `
+                <div class="weibo-header">
+                    <img src="https://picui.ogmua.cn/s1/2026/10/28/6ae1017d58c39.webp">
+                    <div class="name">用户77642983</div>
+                    <div class="time">${item.time}</div>
+                </div>
+                <div class="weibo-content">${item.content}</div>
+                <div class="weibo-footer">
+                    <span>🔁 转发</span>
+                    <span>💬 评论</span>
+                    <span>👍 点赞</span>
+                    <span style="color:#bbb;">👁️ ${Math.floor(Math.random()*90)+10}</span>
+                </div>
+            `;
+            list.appendChild(div);
+        });
+    }
+
+    // ==== 推特渲染 ====
+    function unlockTwitter(phone) {
+        const pwd = document.getElementById('ap-twitter-pwd').value.trim();
+        if(pwd === '奥地利' || pwd === '维也纳') {
+            state.apTwitterUnlocked = true;
+            saveState();
+            document.getElementById('ap-twitter-lock').style.display = 'none';
+            document.getElementById('ap-tw-list').style.display = 'block';
+            renderTwitter();
+        } else {
+            alert("回答错误，请查看机票信息。");
+        }
+    }
+
+    const twitterData = [
+        { time: "9.16", content: "等等等等等等" },
+        { time: "9.9", content: "筹备筹备准备准备" },
+        { time: "8.31", content: "不要哭" },
+        { time: "8.24", content: "又千里送那个了" },
+        { time: "8.10", content: "走了走了" },
+        { time: "8.9", content: "美滋er~的" },
+        { time: "7.31", content: "别赶我走…" },
+        { time: "7.30", content: "哎呀。我今天早上起来上厕所，回来看到他拿个枕头把自己垫起来趴着睡，进去了还跟我装自己刚醒。" },
+        { time: "7.29", content: "公司越大走得越远飘洋过海来看你~" },
+        { time: "6.2", content: "+香港" },
+        { time: "5.15", content: "要不买栋一户建得了" },
+        { time: "5.15", content: "房间太小了都" },
+        { time: "5.14", content: "又给张宸请一周假老师真难应付啊害怕" },
+        { time: "4.21", content: "飞一趟日本怎么样" },
+        { time: "4.19", content: "左航一家都给老子滚得远远的" },
+        { time: "4.7", content: "张顺这傻逼。" },
+        { time: "4.6", content: "最近爱好是给啵啵炒狗粮" },
+        { time: "4.1", content: "噢噢愚人节…" },
+        { time: "4.1", content: "做不到的承诺和谎言有什么区别" },
+        { time: "3.26", content: "我攒两周了。" },
+        { time: "3.13", content: "张宸不许唱时光时光慢些吧" },
+        { time: "3.13", content: "接" },
+        { time: "3.12", content: "为什么一到我总觉得他该出完差回来时候，时间反而很慢。" },
+        { time: "3.5", content: "想啵啵，还想啵啵。" },
+        { time: "2.6", content: "为什么一到我总觉得张宸该长大的时候，时间反而很慢。" },
+        { time: "2.3", content: "发着烧过生日，不让亲，然后说我是烧火棍。" },
+        { time: "1.13", content: "张顺借走我大号最好不要干坏事。" }
+    ];
+
+    function renderTwitter() {
+        const list = document.getElementById('ap-tw-list');
+        list.innerHTML = '';
+        twitterData.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'tw-item';
+            div.innerHTML = `
+                <div class="tw-header">
+                    <img src="https://picui.ogmua.cn/s1/2026/10/28/6ae1c7e4b49e3.webp">
+                    <div>
+                        <div class="name">bbbbjjnnn</div>
+                        <div class="handle">@bbbbjjnnn · ${item.time}</div>
+                    </div>
+                </div>
+                <div class="tw-content">${item.content}</div>
+                <div style="display:flex;gap:30px;color:#888;font-size:14px;margin-top:10px;">
+                    <span>💬</span><span>🔁</span><span>❤️</span><span>📊</span>
+                </div>
+            `;
+            list.appendChild(div);
+        });
+    }
+
+    // ==== 备忘录解锁 ====
+    function unlockMemo(phone) {
+        const pwd = document.getElementById('ap-memo-pwd').value;
+        if(pwd === '430418') {
+            state.apMemoUnlocked = true;
+            saveState();
+            document.getElementById('ap-memo-lock').style.display = 'none';
+            document.getElementById('ap-memo-content').style.display = 'block';
+        } else {
+            alert("密码错误，请重新输入");
+        }
+    }
+
+    // ==== 初始化 ====
+    function updateUI() {
+        if(state.hwUnlocked) {
+            document.getElementById('hw-status').innerText = "可查看";
+            document.getElementById('hw-status').style.color = "#ffb6c1";
+        } else {
+            document.getElementById('hw-status').innerText = "锁定";
+        }
+
+        if(state.apUnlocked) {
+            document.getElementById('card-ap').classList.remove('locked');
+            document.getElementById('ap-status').innerText = "可查看";
+            document.getElementById('ap-status').style.color = "#ffb6c1";
+        } else {
+            document.getElementById('card-ap').classList.add('locked');
+            document.getElementById('ap-status').innerText = "需解锁妈妈手机";
+        }
+    }
+
+    window.onload = () => {
+        loadState();
+        updateTime();
+        updateUI();
+        
+        document.getElementById('phone-hw').style.display = 'none';
+        document.getElementById('phone-ap').style.display = 'none';
+        document.getElementById('screen-select').style.display = 'flex';
+    };
+
 </script>
 </body>
 </html>
